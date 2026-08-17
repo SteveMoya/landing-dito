@@ -1,0 +1,103 @@
+---
+import { site } from '../../data/site';
+import Button from '../ui/Button.astro';
+import Badge from '../ui/Badge.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<section class="relative overflow-hidden pt-28 md:pt-36">
+  <!-- manchas suaves -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+    <div class="absolute -left-24 -top-24 h-[420px] w-[420px] rounded-full bg-clay-pink/25 blur-[100px]"></div>
+    <div class="absolute right-[-100px] top-1/3 h-[380px] w-[380px] rounded-full bg-clay-blue/25 blur-[100px]"></div>
+    <div class="absolute bottom-0 left-1/3 h-[300px] w-[300px] rounded-full bg-clay-yellow/30 blur-[90px]"></div>
+  </div>
+
+  <div class="container-dito relative grid items-center gap-16 pb-24 lg:grid-cols-2 lg:pb-32">
+    <div data-reveal>
+      <Badge color="clay-pink" class="mb-6">🎨 {site.hero.badge}</Badge>
+      <h1 class="font-display text-5xl font-bold leading-[1.06] tracking-tight sm:text-6xl lg:text-7xl">
+        {site.hero.title.start}
+        <span class="text-coral-deep">{site.hero.title.accent}</span>
+      </h1>
+      <p class="mt-6 max-w-lg text-lg leading-relaxed text-ink/70">{site.hero.subtitle}</p>
+      <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+        <Button href="#kits" color="clay-yellow" size="lg">
+          <Icon name="cube" size={18} />
+          {site.hero.primaryCta}
+        </Button>
+        <Button href="#como" color="clay-blue" size="lg">
+          {site.hero.secondaryCta}
+        </Button>
+      </div>
+
+      <dl data-reveal style="--reveal-delay:150ms" class="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4">
+        {
+          site.stats.map((s) => (
+            <div>
+              <dt class="sr-only">{s.label}</dt>
+              <dd class="font-display text-2xl font-bold tracking-tight text-ink">{s.value}</dd>
+              <dd class="text-xs text-ink/50">{s.label}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+
+    <!-- Mascota clay (plastilina pura) -->
+    <div data-reveal style="--reveal-delay:120ms" class="relative mx-auto w-full max-w-md">
+      <div class="animate-breathe relative mx-auto aspect-square w-72 sm:w-80">
+        <div
+          class="blob absolute inset-0"
+          style="background:
+            radial-gradient(circle at 32% 24%, rgb(255 255 255 / 0.8) 0%, rgb(255 255 255 / 0.1) 34%),
+            radial-gradient(circle at 70% 80%, rgb(0 0 0 / 0.12) 0%, rgb(0 0 0 / 0) 45%),
+            var(--color-clay-yellow);
+            box-shadow: inset 0 14px 24px rgb(255 255 255 / 0.5), inset 0 -18px 28px rgb(0 0 0 / 0.14);"
+          aria-hidden="true"
+        ></div>
+
+        <!-- ojos -->
+        <div class="absolute left-[24%] top-[38%] grid h-14 w-14 place-items-center" aria-hidden="true">
+          <span class="blob h-10 w-10" style="background: radial-gradient(circle at 35% 30%, #8a5a2b 0%, #3d2517 60%, #241208 100%); box-shadow: inset 0 3px 6px rgb(0 0 0 / 0.5);"></span>
+          <span class="absolute right-0.5 top-1 h-3 w-3 rounded-full bg-white/85"></span>
+        </div>
+        <div class="absolute left-[58%] top-[38%] grid h-14 w-14 place-items-center" aria-hidden="true">
+          <span class="blob h-10 w-10" style="background: radial-gradient(circle at 35% 30%, #8a5a2b 0%, #3d2517 60%, #241208 100%); box-shadow: inset 0 3px 6px rgb(0 0 0 / 0.5);"></span>
+          <span class="absolute right-0.5 top-1 h-3 w-3 rounded-full bg-white/85"></span>
+        </div>
+
+        <!-- mejillas -->
+        <span class="absolute left-[16%] top-[58%] blob-2 h-8 w-10 bg-clay-pink opacity-80" aria-hidden="true"></span>
+        <span class="absolute right-[16%] top-[58%] blob-2 h-8 w-10 bg-clay-pink opacity-80" aria-hidden="true"></span>
+
+        <!-- sonrisa -->
+        <span
+          class="absolute left-1/2 top-[63%] h-6 w-14 -translate-x-1/2 rounded-b-full border-b-[6px] border-ink/80"
+          aria-hidden="true"
+        ></span>
+
+        <!-- brazos de plastilina -->
+        <span class="blob absolute -left-6 top-[60%] h-12 w-16 -rotate-12" style="background: radial-gradient(circle at 30% 25%, rgb(255 255 255 / 0.6) 0%, rgb(255 255 255 / 0) 40%), var(--color-clay-coral); box-shadow: inset 0 4px 8px rgb(255 255 255 / 0.5), inset 0 -6px 10px rgb(0 0 0 / 0.14);" aria-hidden="true"></span>
+        <span class="blob absolute -right-6 top-[60%] h-12 w-16 rotate-12" style="background: radial-gradient(circle at 30% 25%, rgb(255 255 255 / 0.6) 0%, rgb(255 255 255 / 0) 40%), var(--color-clay-blue); box-shadow: inset 0 4px 8px rgb(255 255 255 / 0.5), inset 0 -6px 10px rgb(0 0 0 / 0.14);" aria-hidden="true"></span>
+
+        <!-- patitas -->
+        <span class="blob absolute bottom-[14%] left-[26%] h-8 w-12 -rotate-6" style="background: radial-gradient(circle at 30% 25%, rgb(255 255 255 / 0.6) 0%, rgb(255 255 255 / 0) 40%), var(--color-clay-mint); box-shadow: inset 0 3px 6px rgb(255 255 255 / 0.5), inset 0 -5px 8px rgb(0 0 0 / 0.12);" aria-hidden="true"></span>
+        <span class="blob absolute bottom-[14%] right-[26%] h-8 w-12 rotate-6" style="background: radial-gradient(circle at 30% 25%, rgb(255 255 255 / 0.6) 0%, rgb(255 255 255 / 0) 40%), var(--color-clay-mint); box-shadow: inset 0 3px 6px rgb(255 255 255 / 0.5), inset 0 -5px 8px rgb(0 0 0 / 0.12);" aria-hidden="true"></span>
+
+        <!-- gorro -->
+        <div class="absolute -top-6 left-1/2 -translate-x-1/2" aria-hidden="true">
+          <span class="blob block h-14 w-16 rotate-[-8deg]" style="background: radial-gradient(circle at 30% 25%, rgb(255 255 255 / 0.7) 0%, rgb(255 255 255 / 0.1) 40%), var(--color-clay-coral); box-shadow: inset 0 5px 9px rgb(255 255 255 / 0.5), inset 0 -6px 10px rgb(0 0 0 / 0.14);"></span>
+          <span class="blob-2 absolute -top-2 left-1/2 h-5 w-8 -translate-x-1/2 bg-clay-pink"></span>
+        </div>
+      </div>
+      <!-- sombra de suelo -->
+      <div class="mx-auto -mt-4 h-8 w-56 rounded-[100%] bg-ink/15 blur-md" aria-hidden="true"></div>
+
+      <!-- burbujas -->
+      <span class="blob absolute left-0 top-10 grid h-14 w-14 place-items-center text-xl" style="background: radial-gradient(circle at 30% 25%, rgb(255 255 255 / 0.7) 0%, rgb(255 255 255 / 0) 40%), var(--color-clay-mint); box-shadow: inset 0 3px 6px rgb(255 255 255 / 0.5), inset 0 -4px 8px rgb(0 0 0 / 0.12);" aria-hidden="true">🌈</span>
+      <span class="blob-2 absolute right-2 top-24 grid h-12 w-12 place-items-center text-lg" style="background: radial-gradient(circle at 30% 25%, rgb(255 255 255 / 0.7) 0%, rgb(255 255 255 / 0) 40%), var(--color-clay-pink); box-shadow: inset 0 3px 6px rgb(255 255 255 / 0.5), inset 0 -4px 8px rgb(0 0 0 / 0.12);" aria-hidden="true">⭐</span>
+      <span class="blob absolute bottom-16 right-0 grid h-12 w-12 place-items-center text-lg" style="background: radial-gradient(circle at 30% 25%, rgb(255 255 255 / 0.7) 0%, rgb(255 255 255 / 0) 40%), var(--color-clay-blue); box-shadow: inset 0 3px 6px rgb(255 255 255 / 0.5), inset 0 -4px 8px rgb(0 0 0 / 0.12);" aria-hidden="true">🦕</span>
+    </div>
+  </div>
+</section>

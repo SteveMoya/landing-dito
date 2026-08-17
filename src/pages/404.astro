@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<BaseLayout title="Página no encontrada" description="404 — esta página no existe." noindex>
+  <section class="flex min-h-[80svh] flex-col items-center justify-center px-6 text-center">
+    <span class="blob grid h-24 w-24 place-items-center text-4xl" style="background: radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.7) 0%, rgb(255 255 255 / 0) 40%), var(--color-clay-yellow); box-shadow: inset 0 4px 8px rgb(255 255 255 / 0.8), inset 0 -5px 9px rgb(0 0 0 / 0.12);" aria-hidden="true">🙈</span>
+    <p class="mt-6 font-display text-sm font-semibold uppercase tracking-wide text-coral-deep">Error 404</p>
+    <h1 class="mt-4 font-display text-7xl font-bold tracking-tight text-ink md:text-8xl">
+      Esta página se <span class="text-coral-deep">aplastó</span>
+    </h1>
+    <p class="mt-6 max-w-md text-ink/70">
+      La misión que buscas se perdió en el cajón de las manualidades.
+    </p>
+    <Button href="/" color="clay-yellow" class="mt-8">
+      Volver a crear
+    </Button>
+  </section>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import { gallery } from '../../data/gallery';
+import Section from '../ui/Section.astro';
+
+const sizes: Record<string, string> = {
+  sm: 'h-28 sm:h-32',
+  md: 'h-36 sm:h-44',
+  lg: 'h-40 sm:h-52',
+};
+---
+
+<Section id="galeria" ariaLabelledBy="gallery-title" class="!pt-0">
+  <div class="mb-14 max-w-2xl">
+    <p class="mb-3 font-display text-sm font-semibold uppercase tracking-wide text-coral-deep">Galería</p>
+    <h2 id="gallery-title" class="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+      Lo que salió de <span class="text-coral-deep">estas manitas</span>
+    </h2>
+    <p class="mt-4 text-lg text-ink/70">
+      Una muestra del mural de Dito: más de 40.000 creaciones subidas por familias.
+    </p>
+  </div>
+
+  <ul class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+    {
+      gallery.map((g, index) => (
+        <li data-reveal style={`--reveal-delay:${(index % 4) * 70}ms`}>
+          <div
+            class={`${sizes[g.size]} grid place-items-center transition-transform duration-300 hover:-translate-y-1 hover:rotate-1`}
+            style={`--clay-color: var(--color-${g.color}); background:
+              radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.65) 0%, rgb(255 255 255 / 0) 40%),
+              var(--clay-color);
+              border-radius: ${index % 2 === 0 ? '52% 48% 55% 45% / 50% 56% 44% 50%' : '45% 55% 48% 52% / 55% 45% 58% 42%'};
+              box-shadow: inset 0 8px 14px rgb(255 255 255 / 0.55), inset 0 -10px 16px rgb(0 0 0 / 0.13);`}
+            role="img"
+            aria-label={g.alt}
+          >
+            <span class="text-4xl sm:text-5xl" aria-hidden="true">{g.emoji}</span>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

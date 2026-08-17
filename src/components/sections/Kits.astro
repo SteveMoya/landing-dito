@@ -1,0 +1,59 @@
+---
+import { kits } from '../../data/kits';
+import Section from '../ui/Section.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<Section id="kits" ariaLabelledBy="kits-title" class="!pt-0">
+  <div class="mb-14 max-w-2xl">
+    <p class="mb-3 font-display text-sm font-semibold uppercase tracking-wide text-coral-deep">Kits</p>
+    <h2 id="kits-title" class="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+      Elige tu <span class="text-coral-deep">misión</span>
+    </h2>
+  </div>
+
+  <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      kits.map((k, index) => (
+        <li data-reveal style={`--reveal-delay:${(index % 4) * 80}ms`} class="flex">
+          <div
+            class="relative flex w-full flex-col rounded-[2.5rem] p-6 transition-transform duration-300 hover:-translate-y-1.5"
+            style={`--clay-color: var(--color-${k.color}); background:
+              radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.6) 0%, rgb(255 255 255 / 0) 40%),
+              var(--clay-color);
+              box-shadow: inset 0 8px 14px rgb(255 255 255 / 0.5), inset 0 -10px 16px rgb(0 0 0 / 0.14);`}
+          >
+            {k.badge && (
+              <span class="absolute -top-3 right-4 rotate-3 rounded-full px-3 py-1 font-display text-[11px] font-bold text-ink" style="background: var(--color-cream); box-shadow: inset 0 2px 4px rgb(255 255 255 / 0.8), inset 0 -3px 5px rgb(0 0 0 / 0.1), 0 4px 10px -4px rgb(0 0 0 / 0.3);">
+                {k.badge}
+              </span>
+            )}
+            <span class="blob grid h-14 w-14 place-items-center text-2xl" style="background: radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.7) 0%, rgb(255 255 255 / 0) 40%), var(--color-cream); box-shadow: inset 0 3px 6px rgb(255 255 255 / 0.9), inset 0 -4px 8px rgb(0 0 0 / 0.1);" aria-hidden="true">
+              {['🎨', '🌋', '🌍', '🏫'][index]}
+            </span>
+            <p class="mt-4 font-display text-[11px] font-bold uppercase tracking-wide text-ink/60">{k.tagline}</p>
+            <h3 class="font-display text-2xl font-bold tracking-tight text-ink">{k.name}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-ink/70">{k.description}</p>
+            <span class="mt-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold text-ink/70" style="background: rgb(255 255 255 / 0.35); box-shadow: inset 0 2px 4px rgb(255 255 255 / 0.6), inset 0 -3px 5px rgb(0 0 0 / 0.08);">
+              🧒 Edad {k.ages}
+            </span>
+            <p class="mt-4 font-display text-3xl font-bold text-ink">
+              {k.price}
+            </p>
+            <a
+              href="#cta"
+              class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 font-display text-sm font-semibold text-ink transition-all duration-200 active:scale-[0.97]"
+              style="background:
+                radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.7) 0%, rgb(255 255 255 / 0) 40%),
+                var(--color-cream);
+                box-shadow: inset 0 3px 6px rgb(255 255 255 / 0.9), inset 0 -4px 8px rgb(0 0 0 / 0.1), 0 8px 18px -6px rgb(0 0 0 / 0.25);"
+            >
+              Lo quiero
+              <Icon name="arrow-right" size={16} />
+            </a>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

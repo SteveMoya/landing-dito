@@ -1,0 +1,41 @@
+---
+interface Props {
+  color?: 'clay-coral' | 'clay-yellow' | 'clay-blue' | 'clay-mint' | 'clay-pink' | 'clay-lilac';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  color = 'clay-yellow',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  ariaLabel,
+  class: className,
+} = Astro.props;
+
+const sizes: Record<string, string> = {
+  sm: 'px-5 py-2.5 text-sm',
+  md: 'px-8 py-3.5 text-base',
+  lg: 'px-10 py-4 text-lg',
+};
+
+const classes = ['clay-btn', sizes[size], className].filter(Boolean).join(' ');
+---
+
+{
+  href ? (
+    <a href={href} class={classes} style={`--clay-color: var(--color-${color})`} aria-label={ariaLabel} aria-disabled={disabled || undefined}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes} style={`--clay-color: var(--color-${color})`} aria-label={ariaLabel} disabled={disabled}>
+      <slot />
+    </button>
+  )
+}

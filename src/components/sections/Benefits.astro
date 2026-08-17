@@ -1,0 +1,39 @@
+---
+import { benefits } from '../../data/benefits';
+import Section from '../ui/Section.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<Section id="beneficios" ariaLabelledBy="benefits-title" class="!pt-0">
+  <div class="mb-14 max-w-2xl">
+    <p class="mb-3 font-display text-sm font-semibold uppercase tracking-wide text-coral-deep">Beneficios</p>
+    <h2 id="benefits-title" class="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+      Jugar con las manos <span class="text-coral-deep">es inteligencia</span>
+    </h2>
+    <p class="mt-4 text-lg text-ink/70">
+      Detrás de cada masa hay una habilidad que los niños entrenan sin darse cuenta.
+    </p>
+  </div>
+
+  <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      benefits.map((b, index) => (
+        <li data-reveal style={`--reveal-delay:${(index % 3) * 80}ms`}>
+          <div
+            class="h-full rounded-[2.5rem] p-6 transition-transform duration-300 hover:-translate-y-1"
+            style={`--clay-color: var(--color-${b.color}); background:
+              radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.6) 0%, rgb(255 255 255 / 0) 40%),
+              var(--clay-color);
+              box-shadow: inset 0 6px 10px rgb(255 255 255 / 0.45), inset 0 -8px 12px rgb(0 0 0 / 0.12);`}
+          >
+            <span class="blob grid h-14 w-14 place-items-center text-ink" style="background: radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.7) 0%, rgb(255 255 255 / 0) 40%), var(--color-cream); box-shadow: inset 0 3px 6px rgb(255 255 255 / 0.9), inset 0 -4px 8px rgb(0 0 0 / 0.1);">
+              <Icon name={b.icon} size={24} />
+            </span>
+            <h3 class="mt-5 font-display text-xl font-bold tracking-tight text-ink">{b.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">{b.description}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

@@ -1,0 +1,44 @@
+---
+import { site } from '../../data/site';
+import Logo from '../brand/Logo.astro';
+import Navigation from './Navigation.astro';
+import MobileMenu from './MobileMenu.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<header data-header class="fixed inset-x-0 top-0 z-50">
+  <div class="container-dito flex h-16 items-center justify-between md:h-20">
+    <Logo />
+
+    <Navigation class="hidden lg:flex" />
+
+    <div class="flex items-center gap-3">
+      <Button href="#kits" color="clay-blue" size="sm" class="hidden sm:inline-flex">
+        Ver kits
+      </Button>
+      <Button href="#cta" color="clay-yellow" size="sm" class="hidden sm:inline-flex">
+        Comprar ahora
+      </Button>
+      <button
+        data-menu-button
+        type="button"
+        class="grid h-11 w-11 place-items-center rounded-2xl text-ink lg:hidden"
+        style="background: radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.6) 0%, rgb(255 255 255 / 0) 38%), var(--color-clay-mint); box-shadow: inset 0 3px 6px rgb(255 255 255 / 0.5), inset 0 -4px 8px rgb(0 0 0 / 0.12);"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Icon name="menu" size={22} />
+      </button>
+    </div>
+  </div>
+
+  <MobileMenu />
+</header>
+
+<script>
+  import { initHeader } from '../../scripts/header';
+
+  initHeader();
+</script>

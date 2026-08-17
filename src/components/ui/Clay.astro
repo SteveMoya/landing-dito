@@ -1,0 +1,17 @@
+---
+interface Props {
+  class?: string;
+  color?: 'clay-coral' | 'clay-yellow' | 'clay-blue' | 'clay-mint' | 'clay-pink' | 'clay-lilac';
+  as?: 'article' | 'div' | 'li';
+  lg?: boolean;
+}
+
+const { color = 'clay-yellow', as: Tag = 'div', class: className, lg = false } = Astro.props as Props;
+---
+
+<Tag
+  class:list={[lg ? 'clay-lg' : 'clay', 'transition-transform duration-300 hover:-translate-y-1', className]}
+  style={`--clay-color: var(--color-${color})`}
+>
+  <slot />
+</Tag>
